@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="padding: 200px 500px 150px 500px; ">
+        <div style="border-style: groove; border-width: 10px; border-radius: 10px;">
+            <div style="padding-top: 25px; padding-left: 75px; padding-bottom: 50px;">
+                <h1>Choose new Password</h1>
+                <p style="color: gray; font-size: 17px;">Almost done. Enter new Password and you're all set.</p>
+                <form action="" onsubmit="return myfun()">
+                    <label for=""><strong>Create a Password:</strong></label><br>
+                    <input type="password" id="password" name="password">
+                    <br>
+                    <br>
+                    <label for=""><strong>Confirm new Password:</strong></label><br>
+                    <input type="password" id="confirmPassword" name="confirmPassword">
+                    <br>
+                    <br>
+                    <span id="messages" style="color: red;"></span>
+                    <span id="messagess" style="color: green;"></span>
+                    <br>
+                    <br>
+                    <input type="submit" value="Reset Password">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function myfun() {
+            var a = document.getElementById("password").value;
+            var b = document.getElementById("confirmPassword").value;
+            const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{}\\|;':",./<>?]).{8,}$/;
+
+            if (a == " "){
+                document.getElementById("messages").innerHTML = "Please fill password";
+                return false;
+            }
+
+            // if (a.length < 8) {
+            //     document.getElementById("messages").innerHTML = "Password must be greater than 8 characters"
+            //     return false;
+            // }
+
+            if (a != b){
+                document.getElementById("messages").innerHTML = "Please ensure that you have entered same password as above";
+                return false;
+            }
+
+            
+            if (!passwordPattern.test(a)) {
+                document.getElementById("messages").innerHTML = "Password must contain at least one lowercase character, one uppercase character, one special character, one numeric character and be at least 8 characters long.";
+                return false;
+            }
+            else{
+                document.getElementById("messagess").innerHTML = "Password is set";
+                return false;
+            }
+        }
+        
+    </script>
+</body>
+</html>
